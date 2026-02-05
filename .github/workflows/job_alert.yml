@@ -27,4 +27,4 @@ jobs:
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
           EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
           RAPID_API_KEY: ${{ secrets.RAPID_API_KEY }}
-        run: python main.py
+        run: python jobAlerts.py
