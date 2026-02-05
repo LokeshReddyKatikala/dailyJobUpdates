@@ -1,0 +1,30 @@
+name: Run Daily Job Scraper
+
+on:
+  schedule:
+    - cron: '1 5 * * *'  # This runs at 9:00 AM UTC daily
+  workflow_dispatch:      # Allows you to click a button to run it manually
+
+jobs:
+  scrape_and_mail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: pip install requests python-dotenv
+
+      - name: Run Script
+        env:
+          # These secrets are set in your GitHub Repo settings
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
+          RAPID_API_KEY: ${{ secrets.RAPID_API_KEY }}
+        run: python main.py
