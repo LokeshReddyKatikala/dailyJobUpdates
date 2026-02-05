@@ -28,7 +28,8 @@ KEYWORDS = [
     "SDE in united states",
     "Machine Learning Engineer in united states",
     "Data Scientist in united states",
-    "Data Engineer in united states"
+    "Data Engineer in united states",
+    "Python Jobs in united states"
 ]
 
 exclude_companies = [
@@ -57,7 +58,6 @@ def fetch_jobs():
             "page": "1",
             "num_pages": "1",
             "date_posted": "today", # API-side freshness filter
-            "job_requirements": "under_3_years_experience",
             "exclude_job_publishers": exclude_companies
         }
 
