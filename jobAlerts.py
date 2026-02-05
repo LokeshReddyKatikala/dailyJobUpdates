@@ -23,22 +23,28 @@ HEADERS = {
 }
 
 KEYWORDS = [
-    "Software Engineer",
-    "Backend Engineer",
-    "Full Stack Engineer",
-    "SDE",
-    "Machine Learning Engineer",
+    "Software Engineer in united states",
+    "Full Stack Engineer in united states",
+    "SDE in united states",
+    "Machine Learning Engineer in united states",
+    "Data Scientist in united states",
+    "Data Engineer in united states"
 ]
 
-LOCATION = "United States"
-RESULTS_PER_QUERY = 20
+exclude_companies = [
+    "Jobs via Dice",
+    "Lensa"
+    ]
+
+LOCATION = "us"
+RESULTS_PER_QUERY = 35
 
 
 def is_within_last_36_hours(iso_time: str) -> bool:
     posted_time = datetime.fromisoformat(iso_time.replace("Z", "+00:00"))
     now = datetime.now(timezone.utc)
     # Using the 48h logic from your snippet to capture the 36h window effectively
-    return (now - posted_time) <= timedelta(hours=48)
+    return (now - posted_time) <= timedelta(hours=24)
 
 
 def fetch_jobs():
@@ -50,8 +56,9 @@ def fetch_jobs():
             "location": LOCATION,
             "page": "1",
             "num_pages": "1",
-            "date_posted": "3days", # API-side freshness filter
-            "job_requirements": "under_3_years_experience"
+            "date_posted": "today", # API-side freshness filter
+            "job_requirements": "under_3_years_experience",
+            "exclude_job_publishers": exclude_companies
         }
 
         response = requests.get(BASE_URL, headers=HEADERS, params=params)
