@@ -23,18 +23,18 @@ HEADERS = {
 }
 
 KEYWORDS = [
-    "Software Engineer in united states",
+    "Software Engineer I",
     "Full Stack Engineer in united states",
-    "SDE in united states",
+    "Software Developer in united states",
     "Machine Learning Engineer in united states",
-    "Data Scientist in united states",
     "Data Engineer in united states",
-    "Python Jobs in united states"
+    "Junior-Mid Python Developer in united states"
 ]
 
 exclude_companies = [
     "Jobs via Dice",
-    "Lensa"
+    "Lensa",
+    "BeeBe"
     ]
 
 LOCATION = "us"
@@ -57,7 +57,7 @@ def fetch_jobs():
             "location": LOCATION,
             "page": "1",
             "num_pages": "1",
-            "date_posted": "today", # API-side freshness filter
+            "date_posted": "all", # API-side freshness filter
             "exclude_job_publishers": exclude_companies
         }
 
