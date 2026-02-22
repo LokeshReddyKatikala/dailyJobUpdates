@@ -32,9 +32,7 @@ KEYWORDS = [
 ]
 
 exclude_companies = [
-    "Jobs via Dice",
-    "Lensa",
-    "BeeBe"
+    "Lensa"
     ]
 
 LOCATION = "us"
