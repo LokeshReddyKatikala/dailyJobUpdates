@@ -35,8 +35,8 @@ exclude_companies = [
     "Lensa"
     ]
 
-LOCATION = "us"
-RESULTS_PER_QUERY = 35
+LOCATION = "US"
+RESULTS_PER_QUERY = 20
 
 
 def is_within_last_36_hours(iso_time: str) -> bool:
@@ -55,7 +55,7 @@ def fetch_jobs():
             "location": LOCATION,
             "page": "1",
             "num_pages": "1",
-            "date_posted": "all", # API-side freshness filter
+            "date_posted": "today", # API-side freshness filter
             "exclude_job_publishers": exclude_companies
         }
 
@@ -86,7 +86,7 @@ def send_email(jobs):
         return
 
     # Formatting the list for the email body
-    job_content = f"Found {len(jobs)} jobs posted in the last 36 hours:\n\n"
+    job_content = f"Found {len(jobs)} jobs posted in the last 24 hours:\n\n"
     for idx, job in enumerate(jobs, 1):
         job_content += f"{idx}. {job['title']} — {job['company']}\n"
         job_content += f"   Location: {job['location']}\n"
